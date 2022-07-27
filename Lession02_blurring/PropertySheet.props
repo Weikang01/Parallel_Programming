@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Label="PropertySheets" />
+  <PropertyGroup Label="UserMacros">
+    <OpencvIncludePath>D:\opencv\build\include</OpencvIncludePath>
+    <OpencvLibPath>D:\opencv\build\x64\vc15\lib</OpencvLibPath>
+  </PropertyGroup>
+  <PropertyGroup />
+  <ItemDefinitionGroup />
+  <ItemGroup>
+    <BuildMacro Include="OpencvIncludePath">
+      <Value>$(OpencvIncludePath)</Value>
+      <EnvironmentVariable>true</EnvironmentVariable>
+    </BuildMacro>
+    <BuildMacro Include="OpencvLibPath">
+      <Value>$(OpencvLibPath)</Value>
+    </BuildMacro>
+  </ItemGroup>
+</Project>

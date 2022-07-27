@@ -60,9 +60,11 @@ int main()
      */
     float h_arr[128];   // convention: h_ variables live on host
     float* d_arr;       // convention: d_ variable live on device (GPU global mem)
-
+    // allocate global memory on the device, place result in "d_arr"
+    cudaMalloc((void**)&d_arr, sizeof(float) * 128);
+    
     // as before, pass in a pointer to data in global memory
-    use_shared_memory_GPU << <1, 128 >> > (d_arr);
+    use_shared_memory_GPU <<<1, 128 >>> (d_arr);
 #pragma endregion
 
 #pragma region global memory
@@ -70,8 +72,6 @@ int main()
      * Next, call a kernel that shows using global memory
      */
 
-    // allocate global memory on the device, place result in "d_arr"
-    cudaMalloc((void**)&d_arr, sizeof(float) * 128);
     // now copy data from host memory "h_arr" to device memory "d_arr"
     cudaMemcpy((void*)d_arr, (void*)h_arr, sizeof(float) * 128, cudaMemcpyKind::cudaMemcpyHostToDevice);
     // lauch the kernel (1 block of 128 threads)
